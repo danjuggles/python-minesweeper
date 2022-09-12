@@ -15,7 +15,6 @@ sym_bomb = "💣"
 sym_blank = "⬜"
 sym_visited = "⬛"
 
-#number_of_bombs = 0
 game_ended = False
 
 check_window = [[-1,-1], [-1,0], [-1,1],
@@ -26,7 +25,7 @@ def create_play_area(rows, cols, difficulty=1):
     # create empty grids
     play_area = [[sym_blank for col in range(cols)] for row in range(rows)]
     data_grid = [[i for i in row] for row in play_area]
-    
+
     # bomb stuff
     bomb_locations = []
     number_of_bombs = int(rows * cols * (difficulty / 25))
@@ -95,7 +94,7 @@ def update_grid_after_good_guess(grid, row, col, adjacent_blanks=[]):
                     adjacent_blanks.append(loc)
             else: # must be number
                 play_grid[row_check][col_check] = data_grid[row_check][col_check]
-    
+
     if len(adjacent_blanks) > 0:
         next_r, next_c = adjacent_blanks.pop(0)
         update_grid_after_good_guess(play_grid, next_r, next_c, adjacent_blanks)
